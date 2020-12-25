@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://spatial-go.github.io</id>
+    <title>Spatial-Go</title>
+    <updated>2020-12-25T02:41:27.754Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://spatial-go.github.io"/>
+    <link rel="self" href="https://spatial-go.github.io/atom.xml"/>
+    <logo>https://spatial-go.github.io/images/avatar.png</logo>
+    <icon>https://spatial-go.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2020, Spatial-Go</rights>
+    <entry>
+        <title type="html"><![CDATA[Geoos]]></title>
+        <id>https://spatial-go.github.io/post/geoos/</id>
+        <link href="https://spatial-go.github.io/post/geoos/">
+        </link>
+        <updated>2020-12-25T02:16:17.000Z</updated>
+        <content type="html"><![CDATA[<p>我们的组织<code>spatial-go</code>正式成立，这是我们的第一个开源项目<code>Geoos</code>,<code>Geoos</code>提供有关空间数据和几何算法,使用<code>Go</code>语言包装实现。<br>
+欢迎大家使用并提出宝贵意见！</p>
+<h2 id="内容列表">内容列表</h2>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E">使用说明</a></li>
+<li><a href="#%E7%BB%B4%E6%8A%A4%E8%80%85">维护者</a></li>
+<li><a href="#%E5%A6%82%E4%BD%95%E8%B4%A1%E7%8C%AE">如何贡献</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E8%AE%B8%E5%8F%AF">使用许可</a></li>
+</ul>
+<h2 id="安装">安装</h2>
+<p>项目依赖 <a href="https://github.com/libgeos/geos">GEOS</a>（GEOS 是 JTS 的C++版本实现) ,需要首先完成<code>GEOS</code>的安装。<code>GEOS</code>安装方法如下：</p>
+<p>1、OS X系统安装(brew 方式)</p>
+<pre><code class="language-sh">$ brew install geos
+</code></pre>
+<p>2、Ubuntu</p>
+<pre><code class="language-sh">$ apt-get install libgeos-dev
+</code></pre>
+<p>3、源码安装</p>
+<pre><code class="language-sh">$ wget http://download.osgeo.org/geos/geos-3.9.0.tar.bz2
+$ tar xvfj geos-3.9.0.tar.bz2
+$ cd geos-3.9.0
+$ ./configure
+$ make
+$ sudo make install
+</code></pre>
+<h2 id="目录结构">目录结构</h2>
+<ol>
+<li><code>geo</code> 包下是对<code>GEOS C</code>库的引用和调用，以此来实现空间运算。</li>
+<li><code>algorithm</code> 是对外暴露的空间运算方法定义。</li>
+<li><code>strategy.go</code> 定义了空间运算底层算法的选择实现。</li>
+</ol>
+<h2 id="使用说明">使用说明</h2>
+<p>以计算面积<code>Area</code>为例。</p>
+<pre><code>package main
+
+import (
+	&quot;fmt&quot;
+	&quot;github.com/spatial-go/geoos&quot;
+)
+
+func main() {
+	// First, choose the default algorithm.
+	strategy := geoos.NormalStrategy()
+	// Secondly, manufacturing test data and convert it to geometry
+	const wkt = `POLYGON((-1 -1, 1 -1, 1 1, -1 1, -1 -1))`
+	geometry, _ := geoos.UnmarshalString(wkt)
+	// Last， call the Area () method and get result.
+	area, e := strategy.Area(geometry)
+	if e != nil {
+		fmt.Printf(e.Error())
+	}
+	fmt.Printf(&quot;%f&quot;, area)
+	// get result 4.0
+}
+
+</code></pre>
+<h2 id="维护者">维护者</h2>
+<p><a href="https://github.com/spatial-go">@spatial-go</a>。</p>
+<h2 id="如何贡献">如何贡献</h2>
+<p>感谢 <a href="https://www.osgeo.org/">OSGeo</a>，我们也将秉承“开放、共创、共赢”的目标理念在空间计算领域贡献自己的一份力量。</p>
+<p>非常欢迎你的加入！<a href="https://github.com/spatial-go/geos/issues/new">提一个 Issue</a></p>
+<p>联系邮箱： <a href="geoos@changjing.ai">geoos@changjing.ai</a></p>
+<h2 id="使用许可">使用许可</h2>
+<p><a href="LICENSE">LGPL-2.1 </a></p>
+]]></content>
+    </entry>
+</feed>
