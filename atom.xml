@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://blog.github.io</id>
+    <id>https://spatial-go.github.io</id>
     <title>Spatial-Go</title>
-    <updated>2020-12-25T02:51:28.191Z</updated>
+    <updated>2020-12-25T02:56:15.293Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://blog.github.io"/>
-    <link rel="self" href="https://blog.github.io/atom.xml"/>
-    <logo>https://blog.github.io/images/avatar.png</logo>
-    <icon>https://blog.github.io/favicon.ico</icon>
+    <link rel="alternate" href="https://spatial-go.github.io"/>
+    <link rel="self" href="https://spatial-go.github.io/atom.xml"/>
+    <logo>https://spatial-go.github.io/images/avatar.png</logo>
+    <icon>https://spatial-go.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Spatial-Go</rights>
     <entry>
         <title type="html"><![CDATA[Geoos]]></title>
-        <id>https://blog.github.io/post/geoos/</id>
-        <link href="https://blog.github.io/post/geoos/">
+        <id>https://spatial-go.github.io/post/geoos/</id>
+        <link href="https://spatial-go.github.io/post/geoos/">
         </link>
         <updated>2020-12-25T02:16:17.000Z</updated>
         <content type="html"><![CDATA[<p>我们的组织<code>spatial-go</code>正式成立，这是我们的第一个开源项目<code>Geoos</code>,<code>Geoos</code>提供有关空间数据和几何算法,使用<code>Go</code>语言包装实现。<br>
