@@ -2,13 +2,115 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://spatial-go.github.io</id>
     <title>Spatial-Go</title>
-    <updated>2020-12-31T02:17:58.817Z</updated>
+    <updated>2020-12-31T03:21:15.374Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://spatial-go.github.io"/>
     <link rel="self" href="https://spatial-go.github.io/atom.xml"/>
     <logo>https://spatial-go.github.io/images/avatar.png</logo>
     <icon>https://spatial-go.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Spatial-Go</rights>
+    <entry>
+        <title type="html"><![CDATA[Postgis 坐标系转换]]></title>
+        <id>https://spatial-go.github.io/post/postgis-zuo-biao-xi-zhuan-huan/</id>
+        <link href="https://spatial-go.github.io/post/postgis-zuo-biao-xi-zhuan-huan/">
+        </link>
+        <updated>2020-12-31T03:01:30.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="直接动态生成转换后数据库新字段">直接动态生成转换后数据库新字段</h1>
+<p>Github: <a href="https://github.com/FreeGIS/Postgis_Coordinate_Transform">https://github.com/FreeGIS/Postgis_Coordinate_Transform</a></p>
+<blockquote>
+<p>支持WGS84与bd-09,gcj-02坐标系，百度经纬度与百度墨卡托之间互转。<br>
+支持点线面多点多线多面的复杂图形批量转换。<br>
+支持对整个表批处理转换。</p>
+</blockquote>
+<pre><code>约束：
+
+要求转换的表是基于PostGIS创建的空间关系表 示例支持的表：
+create table point_test(
+  gid serial primary key,
+  name text,
+  geom geometry(Point,4326)
+);
+不支持的表：
+
+create table point_test(
+  gid serial primary key,
+  name text,
+  lon numeric,   --经度
+  lat numeric     --纬度
+);
+不支持的表是普通关系表，非空间图形表。
+</code></pre>
+<p>要求转换的图形必须是二维图形 当前暂不支持三维或者多维，如带Z值的高程，带M值的测量值等</p>
+<p>转换表图形坐标系必须是epsg:4326 除了将百度墨卡托坐标转百度经纬度外，其他转换方式，必须保证转换表的坐标系是4326，其他坐标系，需要用户使用ST_Transform函数，将其数据先转到4326坐标系下，再使用该工具。百度墨卡托坐标转百度经纬度转换，数据源必须是3857的。</p>
+<p>图形数据是点线面多点多线多面 仅仅支持Point,LineString,Polygon,MultiPoint,MultiLineString,MultiPolygon六种明确类型。其他的PostGIS类型由于不常用，且不严格规范，通常不用于标准的空间数据库类型，暂时不考虑实现。</p>
+<h1 id="sql语句查询转换">sql语句查询转换</h1>
+<p>github：<a href="https://github.com/geocompass/pg-coordtransform">https://github.com/geocompass/pg-coordtransform</a></p>
+<blockquote>
+<p>基于PostgreSQL和PostGIS的坐标转换函数，支持点、线、面的WGS84、GCJ02以及BD09坐标系之间互转。</p>
+</blockquote>
+<p>安装： 复制geoc-pg-coordtansform.sql中代码，在数据库执行</p>
+<pre><code>GCJ02转WGS84
+select geoc_gcj02towgs84(geom) from test_table
+WGS84转GCJ02
+select geoc_wgs84togcj02(geom) from test_table
+WGS84转BD09
+select geoc_wgs84tobd09(geom) from test_table
+BD09转WGS84
+select geoc_bd09towgs84(geom) from test_table
+GCJ02转BD09
+select geoc_gcj02tobd09(geom) from test_table
+BD09转GCJ02
+select geoc_bd09togcj02(geom) from test_table
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[QGIS添加多种互联网底图]]></title>
+        <id>https://spatial-go.github.io/post/qgis-tian-jia-duo-chong-hu-lian-wang-di-tu/</id>
+        <link href="https://spatial-go.github.io/post/qgis-tian-jia-duo-chong-hu-lian-wang-di-tu/">
+        </link>
+        <updated>2020-12-31T02:56:45.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="一-操作步骤">一、操作步骤</h1>
+<p>1、打开QGIS在左侧浏览面板的“XYZ Tiles”上点击鼠标右键，在菜单中选择“新建连接”。<br>
+<img src="https://cdn.nlark.com/yuque/0/2019/png/265282/1558509383886-f8035b00-fd0c-474e-b0f2-43b72c8200ed.png#align=left&amp;display=inline&amp;height=637&amp;name=image.png&amp;originHeight=637&amp;originWidth=640&amp;size=360874&amp;status=done&amp;width=640" alt="image.png" loading="lazy"></p>
+<p>2、在打开的面板中填入名称、网址、最大最小缩放级别等信息，点击“OK”保存连接。<br>
+<img src="https://cdn.nlark.com/yuque/0/2019/png/265282/1558509465791-0b9016af-18f0-4276-929a-7b47a0f0f96d.png#align=left&amp;display=inline&amp;height=589&amp;name=image.png&amp;originHeight=589&amp;originWidth=871&amp;size=561805&amp;status=done&amp;width=871" alt="image.png" loading="lazy"></p>
+<p>3、在左侧浏览面板“XYZ Tiles”节点下出现刚才添加的底图服务连接，通过双击或拖拽操作将底图添加到地图中。</p>
+<h1 id="二-互联网底图服务">二、互联网底图服务</h1>
+<p>1、高德style8</p>
+<blockquote>
+<p><a href="https://webrd01.is.autonavi.com/appmaptile?x=%7Bx%7D&amp;y=%7By%7D&amp;z=%7Bz%7D&amp;lang=zh_cn&amp;size=1&amp;scale=1&amp;style=8">https://webrd01.is.autonavi.com/appmaptile?x={x}&amp;y={y}&amp;z={z}&amp;lang=zh_cn&amp;size=1&amp;scale=1&amp;style=8</a></p>
+</blockquote>
+<p>2、高德style7</p>
+<blockquote>
+<p><a href="https://webrd01.is.autonavi.com/appmaptile?x=%7Bx%7D&amp;y=%7By%7D&amp;z=%7Bz%7D&amp;lang=zh_cn&amp;size=1&amp;scale=1&amp;style=7">https://webrd01.is.autonavi.com/appmaptile?x={x}&amp;y={y}&amp;z={z}&amp;lang=zh_cn&amp;size=1&amp;scale=1&amp;style=7</a></p>
+</blockquote>
+<p>3、天地图</p>
+<blockquote>
+<p><a href="https://t7.tianditu.gov.cn/DataServer?T=vec_w&amp;X=%7Bx%7D&amp;Y=%7By%7D&amp;L=%7Bz%7D&amp;tk=31403cd1b45ca58e9db1e38a8a258c68">https://t7.tianditu.gov.cn/DataServer?T=vec_w&amp;X={x}&amp;Y={y}&amp;L={z}&amp;tk=31403cd1b45ca58e9db1e38a8a258c68</a></p>
+</blockquote>
+<p>4、天地图Label</p>
+<blockquote>
+<p><a href="http://t3.tianditu.com/DataServer?T=cva_w&amp;x=%7Bx%7D&amp;y=%7By%7D&amp;l=%7Bz%7D">https://t3.tianditu.gov.cn/DataServer?T=cva_w&amp;x={x}&amp;y={y}&amp;l={z}</a><a href="https://t7.tianditu.gov.cn/DataServer?T=vec_w&amp;X=%7Bx%7D&amp;Y=%7By%7D&amp;L=%7Bz%7D&amp;tk=31403cd1b45ca58e9db1e38a8a258c68">&amp;tk=31403cd1b45ca58e9db1e38a8a258c68</a></p>
+</blockquote>
+<p>4、OpenStreetMap</p>
+<blockquote>
+<p><a href="http://a.tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png">http://a.tile.openstreetmap.org/{z}/{x}/{y}.png</a></p>
+</blockquote>
+<p>5、Google Street</p>
+<blockquote>
+<p><a href="https://mt1.google.com/vt/lyrs=m&amp;x=%7Bx%7D&amp;y=%7By%7D&amp;z=%7Bz%7D">https://mt1.google.com/vt/lyrs=m&amp;x={x}&amp;y={y}&amp;z={z}</a></p>
+</blockquote>
+<p>6、Google Satellite</p>
+<blockquote>
+<p><a href="https://mt1.google.com/vt/lyrs=s&amp;x=%7Bx%7D&amp;y=%7By%7D&amp;z=%7Bz%7D">https://mt1.google.com/vt/lyrs=s&amp;x={x}&amp;y={y}&amp;z={z}</a></p>
+</blockquote>
+<p>7、Esri Streets</p>
+<blockquote>
+<p><a href="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D">https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}</a></p>
+</blockquote>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Solution Methods for VRP（Vehicle Routing Problem）]]></title>
         <id>https://spatial-go.github.io/post/solution-methods-for-vrpvehicle-routing-problem/</id>
@@ -112,7 +214,7 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Geoos]]></title>
+        <title type="html"><![CDATA[Spatial-Go正式成立啦！]]></title>
         <id>https://spatial-go.github.io/post/geoos/</id>
         <link href="https://spatial-go.github.io/post/geoos/">
         </link>

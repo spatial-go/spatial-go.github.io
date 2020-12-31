@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Postgis 坐标系转换 | Spatial-Go</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://spatial-go.github.io/favicon.ico?v=1609384847358">
+<link rel="stylesheet" href="https://spatial-go.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="直接动态生成转换后数据库新字段
+Github: https://github.com/FreeGIS/Postgis_Coordinate_Transform
+
+支持WGS84与bd-09,gcj-02坐标系，百度经纬度与百度墨卡托之间互转..." />
+    <meta name="keywords" content="postgis,坐标转换" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://spatial-go.github.io">
+        <img src="https://spatial-go.github.io/images/avatar.png?v=1609384847358" class="site-logo">
+        <h1 class="site-title">Spatial-Go</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/spatial-go" target="_blank">spatial-go</a> | <a class="rss" href="https://spatial-go.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Postgis 坐标系转换</h2>
+            <div class="post-date">2020-12-31</div>
+            
+              <div class="feature-container" style="background-image: url('https://pic1.zhimg.com/v2-357234dd69ee5e8f1344a02bfb8b74cc_1440w.jpg?source=172ae18b')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="直接动态生成转换后数据库新字段">直接动态生成转换后数据库新字段</h1>
+<p>Github: <a href="https://github.com/FreeGIS/Postgis_Coordinate_Transform">https://github.com/FreeGIS/Postgis_Coordinate_Transform</a></p>
+<blockquote>
+<p>支持WGS84与bd-09,gcj-02坐标系，百度经纬度与百度墨卡托之间互转。<br>
+支持点线面多点多线多面的复杂图形批量转换。<br>
+支持对整个表批处理转换。</p>
+</blockquote>
+<pre><code>约束：
+
+要求转换的表是基于PostGIS创建的空间关系表 示例支持的表：
+create table point_test(
+  gid serial primary key,
+  name text,
+  geom geometry(Point,4326)
+);
+不支持的表：
+
+create table point_test(
+  gid serial primary key,
+  name text,
+  lon numeric,   --经度
+  lat numeric     --纬度
+);
+不支持的表是普通关系表，非空间图形表。
+</code></pre>
+<p>要求转换的图形必须是二维图形 当前暂不支持三维或者多维，如带Z值的高程，带M值的测量值等</p>
+<p>转换表图形坐标系必须是epsg:4326 除了将百度墨卡托坐标转百度经纬度外，其他转换方式，必须保证转换表的坐标系是4326，其他坐标系，需要用户使用ST_Transform函数，将其数据先转到4326坐标系下，再使用该工具。百度墨卡托坐标转百度经纬度转换，数据源必须是3857的。</p>
+<p>图形数据是点线面多点多线多面 仅仅支持Point,LineString,Polygon,MultiPoint,MultiLineString,MultiPolygon六种明确类型。其他的PostGIS类型由于不常用，且不严格规范，通常不用于标准的空间数据库类型，暂时不考虑实现。</p>
+<h1 id="sql语句查询转换">sql语句查询转换</h1>
+<p>github：<a href="https://github.com/geocompass/pg-coordtransform">https://github.com/geocompass/pg-coordtransform</a></p>
+<blockquote>
+<p>基于PostgreSQL和PostGIS的坐标转换函数，支持点、线、面的WGS84、GCJ02以及BD09坐标系之间互转。</p>
+</blockquote>
+<p>安装： 复制geoc-pg-coordtansform.sql中代码，在数据库执行</p>
+<pre><code>GCJ02转WGS84
+select geoc_gcj02towgs84(geom) from test_table
+WGS84转GCJ02
+select geoc_wgs84togcj02(geom) from test_table
+WGS84转BD09
+select geoc_wgs84tobd09(geom) from test_table
+BD09转WGS84
+select geoc_bd09towgs84(geom) from test_table
+GCJ02转BD09
+select geoc_gcj02tobd09(geom) from test_table
+BD09转GCJ02
+select geoc_bd09togcj02(geom) from test_table
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://spatial-go.github.io/tag/EnG6YfxR7/" class="tag">
+                    postgis
+                  </a>
+                
+                  <a href="https://spatial-go.github.io/tag/wjNIS0OuDR/" class="tag">
+                    坐标转换
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://spatial-go.github.io/post/qgis-tian-jia-duo-chong-hu-lian-wang-di-tu/">
+                  <h3 class="post-title">
+                    QGIS添加多种互联网底图
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '16749612ea5d824f22b2',
+        clientSecret: '273a8e0d1e6fc4b137f8eaf6a90f35e919e3fe29',
+        repo: 'Spatial-Go',
+        owner: 'Spatial-Go',
+        admin: ['Spatial-Go'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

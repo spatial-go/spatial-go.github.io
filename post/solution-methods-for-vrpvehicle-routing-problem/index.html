@@ -1,98 +1,103 @@
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" >
+
 <title>Solution Methods for VRP（Vehicle Routing Problem） | Spatial-Go</title>
-<link rel="shortcut icon" href="https://spatial-go.github.io/favicon.ico?v=1609381068994">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://spatial-go.github.io/favicon.ico?v=1609384847358">
 <link rel="stylesheet" href="https://spatial-go.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="Solution Methods for VRP（Vehicle Routing Problem） | Spatial-Go - Atom Feed" href="https://spatial-go.github.io/atom.xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 
 
     <meta name="description" content="Here, the most commonly used techniques for solving Vehicle Routing Problems are listed. Near all of them are heuristics..." />
     <meta name="keywords" content="算法" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
-    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://spatial-go.github.io">
-  <img class="avatar" src="https://spatial-go.github.io/images/avatar.png?v=1609381068994" alt="">
-  </a>
-  <h1 class="site-title">
-    Spatial-Go
-  </h1>
-  <p class="site-description">
-    
-  </p>
-  <div class="menu-container">
-    
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://spatial-go.github.io">
+        <img src="https://spatial-go.github.io/images/avatar.png?v=1609384847358" class="site-logo">
+        <h1 class="site-title">Spatial-Go</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
       
-        <a href="/" class="menu">
-          首页
-        </a>
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
       
-    
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
       
-        <a href="/archives" class="menu">
-          归档
-        </a>
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
       
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
+    </div>
   </div>
-  <div class="social-container">
-    
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
       
-        <a href="https://github.com/spatial-go" target="_blank">
-          <i class="ri-github-line"></i>
-        </a>
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+        
       
-    
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/spatial-go" target="_blank">spatial-go</a> | <a class="rss" href="https://spatial-go.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
   </div>
 </div>
 
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              Solution Methods for VRP（Vehicle Routing Problem）
-            </h2>
-            <div class="post-info">
-              <span>
-                2020-12-31
-              </span>
-              <span>
-                2 min read
-              </span>
-              
-                <a href="https://spatial-go.github.io/tag/F_GAJ3QHT/" class="post-tag">
-                  # 算法
-                </a>
-              
-            </div>
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Solution Methods for VRP（Vehicle Routing Problem）</h2>
+            <div class="post-date">2020-12-31</div>
             
-              <img class="post-feature-image" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.rtbchina.com%2Fwp-content%2Fuploads%2F2015%2F07%2Falgorithms.jpg&amp;refer=http%3A%2F%2Fwww.rtbchina.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1611973043&amp;t=142649c107a26bbd1ca29f573848c857" alt="">
+              <div class="feature-container" style="background-image: url('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.rtbchina.com%2Fwp-content%2Fuploads%2F2015%2F07%2Falgorithms.jpg&amp;refer=http%3A%2F%2Fwww.rtbchina.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1611973043&amp;t=142649c107a26bbd1ca29f573848c857')">
+              </div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p>Here, the most commonly used techniques for solving Vehicle Routing Problems are listed. Near all of them are heuristics and metaheuristics because no exact algorithm can be guaranteed to find optimal tours within reasonable computing time when the number of cities is large. This is due to the NP-Hardness of the problem. Next we can find a classification of the solution techniques we have considered:</p>
+            <div class="post-content" v-pre>
+              <p>Here, the most commonly used techniques for solving Vehicle Routing Problems are listed. Near all of them are heuristics and metaheuristics because no exact algorithm can be guaranteed to find optimal tours within reasonable computing time when the number of cities is large. This is due to the NP-Hardness of the problem. Next we can find a classification of the solution techniques we have considered:</p>
 <h1 id="exact-approaches精确求解">Exact Approaches（精确求解）</h1>
 <p>As the name suggests, this approach proposes to compute every possible solution until one of the bests is reached.</p>
 <ul>
@@ -187,86 +192,82 @@
 </li>
 </ul>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#exact-approaches%E7%B2%BE%E7%A1%AE%E6%B1%82%E8%A7%A3">Exact Approaches（精确求解）</a></li>
-<li><a href="#heuristics%E5%90%AF%E5%8F%91%E5%BC%8F">Heuristics（启发式）</a>
-<ul>
-<li><a href="#constructive-methods%E6%9E%84%E9%80%A0%E6%B3%95">Constructive Methods（构造法）</a></li>
-<li><a href="#2-phase-algorithm%E4%B8%A4%E9%98%B6%E6%AE%B5%E7%AE%97%E6%B3%95">2-Phase Algorithm（两阶段算法）</a></li>
-<li><a href="#metaheuristics%E5%85%83%E5%90%AF%E5%8F%91%E5%BC%8F">Metaheuristics（元启发式）</a></li>
-</ul>
-</li>
-</ul>
-
-              </div>
             </div>
-          </article>
-        </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://spatial-go.github.io/tag/F_GAJ3QHT/" class="tag">
+                    算法
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://spatial-go.github.io/post/geoos/">
+                  <h3 class="post-title">
+                    Spatial-Go正式成立啦！
+                  </h3>
+                </a>
+              </div>
+            
 
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://spatial-go.github.io/post/geoos/">
-              <h3 class="post-title">
-                Geoos
-              </h3>
-            </a>
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
           </div>
-        
 
-        
-
-        <div class="site-footer">
-  Powered by <a href="https://github.com/spatial-go" target="_blank">spatial-go</a>
-  <a class="rss" href="https://spatial-go.github.io/atom.xml" target="_blank">
-    <i class="ri-rss-line"></i> RSS
-  </a>
-</div>
-
+        </div>
       </div>
     </div>
 
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
     <script>
-      hljs.initHighlightingOnLoad()
 
-      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+      var gitalk = new Gitalk({
+        clientID: '16749612ea5d824f22b2',
+        clientSecret: '273a8e0d1e6fc4b137f8eaf6a90f35e919e3fe29',
+        repo: 'Spatial-Go',
+        owner: 'Spatial-Go',
+        admin: ['Spatial-Go'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
 
-      // This should probably be throttled.
-      // Especially because it triggers during smooth scrolling.
-      // https://lodash.com/docs/4.17.10#throttle
-      // You could do like...
-      // window.addEventListener("scroll", () => {
-      //    _.throttle(doThatStuff, 100);
-      // });
-      // Only not doing it here to keep this Pen dependency-free.
-
-      window.addEventListener("scroll", event => {
-        let fromTop = window.scrollY;
-
-        mainNavLinks.forEach((link, index) => {
-          let section = document.getElementById(decodeURI(link.hash).substring(1));
-          let nextSection = null
-          if (mainNavLinks[index + 1]) {
-            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-          }
-          if (section.offsetTop <= fromTop) {
-            if (nextSection) {
-              if (nextSection.offsetTop > fromTop) {
-                link.classList.add("current");
-              } else {
-                link.classList.remove("current");    
-              }
-            } else {
-              link.classList.add("current");
-            }
-          } else {
-            link.classList.remove("current");
-          }
-        });
-      });
+      gitalk.render('gitalk-container')
 
     </script>
+  
+
+  
+
+
+
+
   </body>
 </html>
