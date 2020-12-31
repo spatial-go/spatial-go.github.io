@@ -1,0 +1,272 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Solution Methods for VRP（Vehicle Routing Problem） | Spatial-Go</title>
+<link rel="shortcut icon" href="https://spatial-go.github.io/favicon.ico?v=1609381068994">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://spatial-go.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Solution Methods for VRP（Vehicle Routing Problem） | Spatial-Go - Atom Feed" href="https://spatial-go.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Here, the most commonly used techniques for solving Vehicle Routing Problems are listed. Near all of them are heuristics..." />
+    <meta name="keywords" content="算法" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://spatial-go.github.io">
+  <img class="avatar" src="https://spatial-go.github.io/images/avatar.png?v=1609381068994" alt="">
+  </a>
+  <h1 class="site-title">
+    Spatial-Go
+  </h1>
+  <p class="site-description">
+    
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/spatial-go" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Solution Methods for VRP（Vehicle Routing Problem）
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-12-31
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://spatial-go.github.io/tag/F_GAJ3QHT/" class="post-tag">
+                  # 算法
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.rtbchina.com%2Fwp-content%2Fuploads%2F2015%2F07%2Falgorithms.jpg&amp;refer=http%3A%2F%2Fwww.rtbchina.com&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1611973043&amp;t=142649c107a26bbd1ca29f573848c857" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>Here, the most commonly used techniques for solving Vehicle Routing Problems are listed. Near all of them are heuristics and metaheuristics because no exact algorithm can be guaranteed to find optimal tours within reasonable computing time when the number of cities is large. This is due to the NP-Hardness of the problem. Next we can find a classification of the solution techniques we have considered:</p>
+<h1 id="exact-approaches精确求解">Exact Approaches（精确求解）</h1>
+<p>As the name suggests, this approach proposes to compute every possible solution until one of the bests is reached.</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/branch-and-bound">Branch and bound</a>（分支定界法）</p>
+</li>
+<li>
+<p>Branch and cut（分支剪切法）</p>
+</li>
+</ul>
+<h1 id="heuristics启发式">Heuristics（启发式）</h1>
+<p><strong>启发式算法中文介绍</strong>：<a href="https://leovan.me/cn/2019/04/heuristic-algorithms/">https://leovan.me/cn/2019/04/heuristic-algorithms/</a></p>
+<p>Heuristic methods perform a relatively limited exploration of the search space and typically produce good quality solutions within modest computing times.</p>
+<h2 id="constructive-methods构造法">Constructive Methods（构造法）</h2>
+<p>Gradually build a feasible solution while keeping an eye on solution cost, but do not contain an improvement phase per se.</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/savings-algorithms/">Savings: Clark and Wright</a>（节约法）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/matching-based-savings-algorithm/">Matching Based</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/multi-route-improvement-algorithm/">Multi-route Improvement Heuristics</a>（多路径改进算法）</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/multi-route-improvement-algorithm/#ThompsonPsaraftis">Thompson and Psaraftis</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/multi-route-improvement-algorithm/#VanBreedam">Van Breedam</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/multi-route-improvement-algorithm/#KinderwaterSavelsbergh">Kinderwater and Savelsbergh</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-phase-algorithm两阶段算法">2-Phase Algorithm（两阶段算法）</h2>
+<p>The problem is decomposed into its two natural components: (1) clustering of vertices into feasible routes and (2) actual route construction, with possible feedback loops between the two stages.</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/">Cluster-First, Route-Second Algorithms</a>（先聚类再排线）</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/#FisherJaikumar">Fisher and Jaikumar</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/#ThePetalAlgorithm">The Petal Algorithm</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/#TheSweepAlgorithm">The Sweep Algorithm</a>（扫描算法）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/#Taillard">Taillard</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/route-first-cluster-second-method/">Route-First, Cluster-Second Algorithms</a>（先排线再聚类）</p>
+</li>
+</ul>
+<h2 id="metaheuristics元启发式">Metaheuristics（元启发式）</h2>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/ant-algorithms/">Ant Algorithms</a>（蚁群算法）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/constraint-programming-algorithm/">Constraint Programming</a>（约束编程）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/deterministic-annealing/">Deterministic Annealing</a>（确定性退火）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/genetic-algorithm/">Genetic Algorithms</a>（遗传算法）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/simulated-annealing/">Simulated Annealing</a>（模拟退火）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/tabu-search/">Tabu Search</a>（禁忌搜索）</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/tabu-search/#GranularTabu">Granular Tabu</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/tabu-search/#AdaptiveMemoryProcedure">The adaptative memory procedure</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/tabu-search/#KellyXu">Kelly and Xu</a></p>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#exact-approaches%E7%B2%BE%E7%A1%AE%E6%B1%82%E8%A7%A3">Exact Approaches（精确求解）</a></li>
+<li><a href="#heuristics%E5%90%AF%E5%8F%91%E5%BC%8F">Heuristics（启发式）</a>
+<ul>
+<li><a href="#constructive-methods%E6%9E%84%E9%80%A0%E6%B3%95">Constructive Methods（构造法）</a></li>
+<li><a href="#2-phase-algorithm%E4%B8%A4%E9%98%B6%E6%AE%B5%E7%AE%97%E6%B3%95">2-Phase Algorithm（两阶段算法）</a></li>
+<li><a href="#metaheuristics%E5%85%83%E5%90%AF%E5%8F%91%E5%BC%8F">Metaheuristics（元启发式）</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://spatial-go.github.io/post/geoos/">
+              <h3 class="post-title">
+                Geoos
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/spatial-go" target="_blank">spatial-go</a>
+  <a class="rss" href="https://spatial-go.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

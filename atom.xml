@@ -2,13 +2,115 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://spatial-go.github.io</id>
     <title>Spatial-Go</title>
-    <updated>2020-12-25T02:57:17.199Z</updated>
+    <updated>2020-12-31T02:17:58.817Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://spatial-go.github.io"/>
     <link rel="self" href="https://spatial-go.github.io/atom.xml"/>
     <logo>https://spatial-go.github.io/images/avatar.png</logo>
     <icon>https://spatial-go.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Spatial-Go</rights>
+    <entry>
+        <title type="html"><![CDATA[Solution Methods for VRP（Vehicle Routing Problem）]]></title>
+        <id>https://spatial-go.github.io/post/solution-methods-for-vrpvehicle-routing-problem/</id>
+        <link href="https://spatial-go.github.io/post/solution-methods-for-vrpvehicle-routing-problem/">
+        </link>
+        <updated>2020-12-31T02:16:03.000Z</updated>
+        <content type="html"><![CDATA[<p>Here, the most commonly used techniques for solving Vehicle Routing Problems are listed. Near all of them are heuristics and metaheuristics because no exact algorithm can be guaranteed to find optimal tours within reasonable computing time when the number of cities is large. This is due to the NP-Hardness of the problem. Next we can find a classification of the solution techniques we have considered:</p>
+<h1 id="exact-approaches精确求解">Exact Approaches（精确求解）</h1>
+<p>As the name suggests, this approach proposes to compute every possible solution until one of the bests is reached.</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/branch-and-bound">Branch and bound</a>（分支定界法）</p>
+</li>
+<li>
+<p>Branch and cut（分支剪切法）</p>
+</li>
+</ul>
+<h1 id="heuristics启发式">Heuristics（启发式）</h1>
+<p><strong>启发式算法中文介绍</strong>：<a href="https://leovan.me/cn/2019/04/heuristic-algorithms/">https://leovan.me/cn/2019/04/heuristic-algorithms/</a></p>
+<p>Heuristic methods perform a relatively limited exploration of the search space and typically produce good quality solutions within modest computing times.</p>
+<h2 id="constructive-methods构造法">Constructive Methods（构造法）</h2>
+<p>Gradually build a feasible solution while keeping an eye on solution cost, but do not contain an improvement phase per se.</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/savings-algorithms/">Savings: Clark and Wright</a>（节约法）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/matching-based-savings-algorithm/">Matching Based</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/multi-route-improvement-algorithm/">Multi-route Improvement Heuristics</a>（多路径改进算法）</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/multi-route-improvement-algorithm/#ThompsonPsaraftis">Thompson and Psaraftis</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/multi-route-improvement-algorithm/#VanBreedam">Van Breedam</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/multi-route-improvement-algorithm/#KinderwaterSavelsbergh">Kinderwater and Savelsbergh</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-phase-algorithm两阶段算法">2-Phase Algorithm（两阶段算法）</h2>
+<p>The problem is decomposed into its two natural components: (1) clustering of vertices into feasible routes and (2) actual route construction, with possible feedback loops between the two stages.</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/">Cluster-First, Route-Second Algorithms</a>（先聚类再排线）</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/#FisherJaikumar">Fisher and Jaikumar</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/#ThePetalAlgorithm">The Petal Algorithm</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/#TheSweepAlgorithm">The Sweep Algorithm</a>（扫描算法）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/cluster-first-route-second-method/#Taillard">Taillard</a></p>
+</li>
+</ul>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/heuristics/route-first-cluster-second-method/">Route-First, Cluster-Second Algorithms</a>（先排线再聚类）</p>
+</li>
+</ul>
+<h2 id="metaheuristics元启发式">Metaheuristics（元启发式）</h2>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/ant-algorithms/">Ant Algorithms</a>（蚁群算法）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/constraint-programming-algorithm/">Constraint Programming</a>（约束编程）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/deterministic-annealing/">Deterministic Annealing</a>（确定性退火）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/genetic-algorithm/">Genetic Algorithms</a>（遗传算法）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/simulated-annealing/">Simulated Annealing</a>（模拟退火）</p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/tabu-search/">Tabu Search</a>（禁忌搜索）</p>
+<ul>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/tabu-search/#GranularTabu">Granular Tabu</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/tabu-search/#AdaptiveMemoryProcedure">The adaptative memory procedure</a></p>
+</li>
+<li>
+<p><a href="http://neo.lcc.uma.es/vrp/solution-methods/metaheuristics/tabu-search/#KellyXu">Kelly and Xu</a></p>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Geoos]]></title>
         <id>https://spatial-go.github.io/post/geoos/</id>
