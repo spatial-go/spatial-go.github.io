@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>开源项目规划 | Spatial-Go</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://spatial-go.github.io/favicon.ico?v=1610356324871">
+<link rel="stylesheet" href="https://spatial-go.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="基础能力开源
+1、 geoos: 提供基础空间对象计算、坐标系转换服务，继续丰富、维护、改善。
+项目能力开源（模块开源）
+1、通用信息窗的封装
+2、地图组件的封装
+3、数据表格类的封装
+4、地图切换的组件封装
+5、城市列表的控件封装
+数据能..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://spatial-go.github.io">
+        <img src="https://spatial-go.github.io/images/avatar.png?v=1610356324871" class="site-logo">
+        <h1 class="site-title">Spatial-Go</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备20027634号-3</a> | <a class="rss" href="https://spatial-go.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">开源项目规划</h2>
+            <div class="post-date">2021-01-05</div>
+            
+            <div class="post-content" v-pre>
+              <h2 id="基础能力开源">基础能力开源</h2>
+<p>1、 geoos: 提供基础空间对象计算、坐标系转换服务，继续丰富、维护、改善。</p>
+<h2 id="项目能力开源模块开源">项目能力开源（模块开源）</h2>
+<p>1、通用信息窗的封装<br>
+2、地图组件的封装<br>
+3、数据表格类的封装<br>
+4、地图切换的组件封装<br>
+5、城市列表的控件封装</p>
+<h2 id="数据能力开源">数据能力开源 ？？？</h2>
+<p>1、POI数据<br>
+2、AOI数据<br>
+3、行业数据</p>
+<h1 id="参与合作">参与合作</h1>
+<p>1、和范式共同开源有关AI与GIS应用<br>
+2、公司内部参与：<br>
+1、前端组<br>
+2、后端组<br>
+共同讨论选择感兴趣方向选择开源内容<br>
+3、 参与头部公司开源项目补充自身基础能力（mapbox、geoserver）<br>
+参与过程：<br>
+1、翻译源码、编写使用blog<br>
+2、参与fix issue<br>
+3、实际应用开源</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://spatial-go.github.io/postgis-zuo-biao-xi-zhuan-huan/">
+                  <h3 class="post-title">
+                    Postgis 坐标系转换
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '16749612ea5d824f22b2',
+        clientSecret: '273a8e0d1e6fc4b137f8eaf6a90f35e919e3fe29',
+        repo: 'Spatial-Go',
+        owner: 'Spatial-Go',
+        admin: ['Spatial-Go'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

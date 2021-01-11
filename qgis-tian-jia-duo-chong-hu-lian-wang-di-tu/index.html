@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>QGIS添加多种互联网底图 | Spatial-Go</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://spatial-go.github.io/favicon.ico?v=1610356324871">
+<link rel="stylesheet" href="https://spatial-go.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="一、操作步骤
+1、打开QGIS在左侧浏览面板的“XYZ Tiles”上点击鼠标右键，在菜单中选择“新建连接”。
+
+2、在打开的面板中填入名称、网址、最大最小缩放级别等信息，点击“OK”保存连接。
+
+3、在左侧浏览面板“XYZ Tiles”节..." />
+    <meta name="keywords" content="QGIS" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://spatial-go.github.io">
+        <img src="https://spatial-go.github.io/images/avatar.png?v=1610356324871" class="site-logo">
+        <h1 class="site-title">Spatial-Go</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备20027634号-3</a> | <a class="rss" href="https://spatial-go.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">QGIS添加多种互联网底图</h2>
+            <div class="post-date">2020-12-31</div>
+            
+              <div class="feature-container" style="background-image: url('https://aberdeenstudygroup.github.io/studyGroup/lessons/SG-T8-QGIS/qgis-logo-new.png')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="一-操作步骤">一、操作步骤</h1>
+<p>1、打开QGIS在左侧浏览面板的“XYZ Tiles”上点击鼠标右键，在菜单中选择“新建连接”。<br>
+<img src="https://cdn.nlark.com/yuque/0/2019/png/265282/1558509383886-f8035b00-fd0c-474e-b0f2-43b72c8200ed.png#align=left&amp;display=inline&amp;height=637&amp;name=image.png&amp;originHeight=637&amp;originWidth=640&amp;size=360874&amp;status=done&amp;width=640" alt="image.png" loading="lazy"></p>
+<p>2、在打开的面板中填入名称、网址、最大最小缩放级别等信息，点击“OK”保存连接。<br>
+<img src="https://cdn.nlark.com/yuque/0/2019/png/265282/1558509465791-0b9016af-18f0-4276-929a-7b47a0f0f96d.png#align=left&amp;display=inline&amp;height=589&amp;name=image.png&amp;originHeight=589&amp;originWidth=871&amp;size=561805&amp;status=done&amp;width=871" alt="image.png" loading="lazy"></p>
+<p>3、在左侧浏览面板“XYZ Tiles”节点下出现刚才添加的底图服务连接，通过双击或拖拽操作将底图添加到地图中。</p>
+<h1 id="二-互联网底图服务">二、互联网底图服务</h1>
+<p>1、高德style8</p>
+<blockquote>
+<p><a href="https://webrd01.is.autonavi.com/appmaptile?x=%7Bx%7D&amp;y=%7By%7D&amp;z=%7Bz%7D&amp;lang=zh_cn&amp;size=1&amp;scale=1&amp;style=8">https://webrd01.is.autonavi.com/appmaptile?x={x}&amp;y={y}&amp;z={z}&amp;lang=zh_cn&amp;size=1&amp;scale=1&amp;style=8</a></p>
+</blockquote>
+<p>2、高德style7</p>
+<blockquote>
+<p><a href="https://webrd01.is.autonavi.com/appmaptile?x=%7Bx%7D&amp;y=%7By%7D&amp;z=%7Bz%7D&amp;lang=zh_cn&amp;size=1&amp;scale=1&amp;style=7">https://webrd01.is.autonavi.com/appmaptile?x={x}&amp;y={y}&amp;z={z}&amp;lang=zh_cn&amp;size=1&amp;scale=1&amp;style=7</a></p>
+</blockquote>
+<p>3、天地图</p>
+<blockquote>
+<p><a href="https://t7.tianditu.gov.cn/DataServer?T=vec_w&amp;X=%7Bx%7D&amp;Y=%7By%7D&amp;L=%7Bz%7D&amp;tk=31403cd1b45ca58e9db1e38a8a258c68">https://t7.tianditu.gov.cn/DataServer?T=vec_w&amp;X={x}&amp;Y={y}&amp;L={z}&amp;tk=31403cd1b45ca58e9db1e38a8a258c68</a></p>
+</blockquote>
+<p>4、天地图Label</p>
+<blockquote>
+<p><a href="http://t3.tianditu.com/DataServer?T=cva_w&amp;x=%7Bx%7D&amp;y=%7By%7D&amp;l=%7Bz%7D">https://t3.tianditu.gov.cn/DataServer?T=cva_w&amp;x={x}&amp;y={y}&amp;l={z}</a><a href="https://t7.tianditu.gov.cn/DataServer?T=vec_w&amp;X=%7Bx%7D&amp;Y=%7By%7D&amp;L=%7Bz%7D&amp;tk=31403cd1b45ca58e9db1e38a8a258c68">&amp;tk=31403cd1b45ca58e9db1e38a8a258c68</a></p>
+</blockquote>
+<p>4、OpenStreetMap</p>
+<blockquote>
+<p><a href="http://a.tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png">http://a.tile.openstreetmap.org/{z}/{x}/{y}.png</a></p>
+</blockquote>
+<p>5、Google Street</p>
+<blockquote>
+<p><a href="https://mt1.google.com/vt/lyrs=m&amp;x=%7Bx%7D&amp;y=%7By%7D&amp;z=%7Bz%7D">https://mt1.google.com/vt/lyrs=m&amp;x={x}&amp;y={y}&amp;z={z}</a></p>
+</blockquote>
+<p>6、Google Satellite</p>
+<blockquote>
+<p><a href="https://mt1.google.com/vt/lyrs=s&amp;x=%7Bx%7D&amp;y=%7By%7D&amp;z=%7Bz%7D">https://mt1.google.com/vt/lyrs=s&amp;x={x}&amp;y={y}&amp;z={z}</a></p>
+</blockquote>
+<p>7、Esri Streets</p>
+<blockquote>
+<p><a href="https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D">https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}</a></p>
+</blockquote>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://spatial-go.github.io/IhFHIMVRf/" class="tag">
+                    QGIS
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://spatial-go.github.io/solution-methods-for-vrpvehicle-routing-problem/">
+                  <h3 class="post-title">
+                    Solution Methods for VRP（Vehicle Routing Problem）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '16749612ea5d824f22b2',
+        clientSecret: '273a8e0d1e6fc4b137f8eaf6a90f35e919e3fe29',
+        repo: 'Spatial-Go',
+        owner: 'Spatial-Go',
+        admin: ['Spatial-Go'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
